@@ -5,7 +5,7 @@ import About from "./pages/About/About";
 import Navbar from "./components/Navbar/Navbar";
 import ProductDetail from "./pages/Product/ProductDetail";
 import AddProduct from "./pages/Product/AddProduct";
-import DeleteProduct from "./pages/Product/DeleteProduct";
+
 
 function App() {
 	return (
