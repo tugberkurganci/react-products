@@ -1,7 +1,17 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import { useDeleteProduct } from "../../pages/Product/useDeleteProduct";
 
 export default function ProductCard(props) {
+
+	
+	const handleDeleteClick = () => {
+		const confirmDelete = window.confirm("Are you sure you want to delete this product?");
+		if (confirmDelete) {
+		  setDeleted(true);
+		}
+	  };
+	const { isDeleted, setDeleted } = useDeleteProduct(props.product.id);
 	return (
 		<div className="card">
 			<img src={props.product.thumbnail} className="card-img-top" alt="..." />
@@ -14,7 +24,10 @@ export default function ProductCard(props) {
 				>
 					Details
 				</Link>
-				<Link  to={`/delete-product/${props.product.id}`} className="btn btn-danger">Sil</Link>
+				<button
+          onClick={() =>handleDeleteClick()} 
+          className="btn btn-danger"
+             >Delete</button>
 			</div>
 		</div>
 	);
