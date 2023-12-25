@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 
 export const useDeleteProduct = (productId) => {
-  
   const [isDeleted, setDeleted] = useState(false);
 
   useEffect(() => {
@@ -24,6 +22,12 @@ export const useDeleteProduct = (productId) => {
     }
   }, [isDeleted, productId]);
 
-  return { isDeleted, setDeleted };
-};
+  const handleDeleteClick = () => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this product?");
+    if (confirmDelete) {
+      setDeleted(true);
+    }
+  };
 
+  return { isDeleted, handleDeleteClick };
+};
