@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { ProductModel } from "../../models/ProductModel";
 
 export default function ProductDetail() {
   const { productId } = useParams();
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState<ProductModel>();
 
   useEffect(() => {
     getProductDetails();

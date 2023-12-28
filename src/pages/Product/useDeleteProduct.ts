@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export const useDeleteProduct = (productId) => {
+export const useDeleteProduct = (productId:string) => {
   const [isDeleted, setDeleted] = useState(false);
 
   useEffect(() => {

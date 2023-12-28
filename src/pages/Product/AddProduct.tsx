@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { ProductModel } from "../../models/ProductModel";
 
 export default function AddProduct() {
-  const [productData, setProductData] = useState({
+  const [productData, setProductData] = useState<ProductModel>({
     title: "",
+    id:0,
     brand: "",
     category: "",
     description: "",
-    price: "",
-    discountPercentage: "",
-    rating: "",
-    stock: "",
+    price: 0,
+    discountPercentage: 0,
+    rating: 0,
+    stock: 0,
     thumbnail: "",
     images: []
   });
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e:any) => {
     const { name, value } = e.target;
     setProductData({
       ...productData,
@@ -23,7 +25,7 @@ export default function AddProduct() {
     });
   };
 
-  const handleImageChange = (e) => {
+  const handleImageChange = (e:any) => {
     const { name, files } = e.target;
     setProductData({
       ...productData,
@@ -31,16 +33,17 @@ export default function AddProduct() {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:any) => {
     e.preventDefault();
-    try {
+    if(productData.id!==0){  try {
    
-    const response= await axios.post("https://dummyjson.com/products/add", productData);
-      console.log("Product added successfully");
-      console.log(response)
-    } catch (error) {
-      console.error("Error adding product:", error);
-    }
+      const response= await axios.post("https://dummyjson.com/products/add", productData);
+        console.log("Product added successfully");
+        console.log(response)
+      } catch (error) {
+        console.error("Error adding product:", error);
+      }}
+  
   };
 
   return (
